@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#151413">
+<title>Unique Seat Cover</title>
+<meta name="description" content="Unique Seat Cover, Madurai. Bike seat covers, tank covers and outer covers. Enquire on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#151413;--s1:#1e1c1a;--s2:#282522;--ink:#f1ece2;--mut:#a8a195;--gold:#c9a45c;--gold2:#e4c98a;--ln:rgba(201,164,92,.3);--r:14px;--pad:clamp(18px,5vw,56px);--hd:64px;--f1:'Big Shoulders Display','Arial Narrow',sans-serif;--f2:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.6 var(--f2);overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+h1,h2,h3{font-family:var(--f1);font-weight:800;line-height:1;letter-spacing:.02em;text-transform:uppercase}
+.wrap{padding:0 var(--pad);max-width:1400px;margin:0 auto}
+main{padding-top:calc(var(--hd) + env(safe-area-inset-top));padding-bottom:96px;min-height:100vh}
+#app.in{animation:pg .28s ease-out}
+@keyframes pg{from{opacity:0;transform:translateY(10px)}}
+/* header */
+.hd{position:fixed;top:0;left:0;right:0;z-index:50;height:calc(var(--hd) + env(safe-area-inset-top));padding:env(safe-area-inset-top) var(--pad) 0;display:flex;align-items:center;justify-content:space-between;background:rgba(21,20,19,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--ln)}
+.brand{font:800 24px/1 var(--f1);letter-spacing:.08em;text-transform:uppercase}
+.mb{min-height:44px;min-width:44px;padding:0 14px;border:1px solid var(--ln);border-radius:999px;font-weight:600}
+.nav{display:none;position:fixed;top:calc(var(--hd) + env(safe-area-inset-top));left:0;right:0;flex-direction:column;padding:12px var(--pad) 22px;background:var(--bg);border-bottom:1px solid var(--ln)}
+.nav.open{display:flex}
+.nav a{padding:14px 0;font-size:18px;font-weight:600;border-bottom:1px solid rgba(255,255,255,.06)}
+.nav a[aria-current=page]{color:var(--gold2)}
+@media(min-width:860px){.mb{display:none}.nav{display:flex;position:static;flex-direction:row;gap:34px;padding:0;background:none;border:0}.nav a{padding:6px 0;border:0;font-size:15px}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 26px;border-radius:999px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1612;font-weight:800;transition:transform .2s,filter .2s;text-align:center}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn.g{background:none;color:var(--ink);border:1px solid var(--ln)}
+.btn.sm{min-height:40px;padding:0 16px;font-size:14px}
+.btn.big{min-height:60px;width:100%;font-size:18px;background:#25d366;color:#06220f}
+.btn.dng{background:none;color:#ff8f7e;border:1px solid rgba(255,143,126,.4)}
+/* hero */
+.hero{min-height:calc(100svh - var(--hd));display:flex;flex-direction:column;justify-content:center;padding:48px var(--pad);position:relative;background:radial-gradient(ellipse at 75% 15%,rgba(201,164,92,.2),transparent 55%),repeating-linear-gradient(45deg,transparent 0 38px,rgba(201,164,92,.1) 38px 39px),repeating-linear-gradient(-45deg,transparent 0 38px,rgba(201,164,92,.1) 38px 39px)}
+.hero h1{font-size:clamp(68px,20vw,230px);line-height:.84;letter-spacing:.01em}
+.hero h1 span{display:block}
+.hero hr{border:0;border-top:2px dashed var(--gold);width:min(320px,70%);margin:28px 0}
+.hero p{max-width:34ch;font-size:clamp(17px,2.4vw,22px);color:var(--mut);margin-bottom:30px}
+.hero .row{display:flex;gap:12px;flex-wrap:wrap}
+.sec{padding:72px 0 0}
+.sec h2{font-size:clamp(34px,6vw,64px);margin-bottom:26px}
+/* category cards */
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);padding:0 var(--pad) 8px;margin:0 calc(-1*var(--pad));scrollbar-width:none}
+.rail::-webkit-scrollbar{display:none}
+.cc{position:relative;flex:0 0 80%;aspect-ratio:4/5;scroll-snap-align:center;border-radius:var(--r);overflow:hidden;background:var(--s1)}
+.cc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cc::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(21,20,19,.95) 8%,rgba(21,20,19,.1) 60%)}
+.cc::after{content:"";position:absolute;inset:10px;border:1.5px dashed rgba(228,201,138,.55);border-radius:10px;pointer-events:none}
+.cc .ct{position:absolute;left:0;right:0;bottom:0;padding:26px 24px;z-index:1}
+.cc h3{font-size:42px;margin-bottom:6px}.cc p{color:var(--mut);margin-bottom:16px;font-size:15px}
+.cc:hover img{transform:scale(1.05)}.cc:active{transform:scale(.99)}
+@media(min-width:700px){.cc{flex-basis:44%}}
+@media(min-width:960px){.rail{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;overflow:visible;padding:0;margin:0}.cc{aspect-ratio:3/4}}
+/* about + contact */
+.ab{display:grid;gap:28px}
+.ab p{color:var(--mut);max-width:60ch}
+address{font-style:normal;padding:22px;border:1px dashed var(--ln);border-radius:var(--r);background:var(--s1)}
+address b{display:block;font:800 22px var(--f1);text-transform:uppercase;margin-bottom:8px}
+address a{color:var(--gold2)}
+@media(min-width:860px){.ab{grid-template-columns:1.2fr 1fr;align-items:start}}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.act{display:flex;flex-direction:column;justify-content:center;min-height:96px;padding:16px 18px;border:1px solid var(--ln);border-radius:var(--r);background:var(--s1);transition:border-color .2s,transform .2s}
+.act:hover{border-color:var(--gold)}.act:active{transform:scale(.97)}
+.act b{font:800 24px var(--f1);text-transform:uppercase}.act small{color:var(--mut);font-size:13px}
+@media(min-width:860px){.acts{grid-template-columns:repeat(4,1fr)}}
+.foot{margin-top:64px;padding:22px 0;border-top:1px solid var(--ln);color:var(--mut);font-size:14px}
+.foot button{color:inherit}
+/* catalogue */
+.top{padding:28px 0 22px}
+.back{display:inline-flex;align-items:center;min-height:44px;color:var(--gold2);font-weight:600}
+.top h1{font-size:clamp(44px,9vw,100px);margin:6px 0 4px}
+.top p{color:var(--mut)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.chips a{min-height:44px;display:inline-flex;align-items:center;padding:0 18px;border:1px solid var(--ln);border-radius:999px;font-weight:600}
+.chips a[aria-current=page]{background:var(--gold);color:#1a1612;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:var(--s1);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);overflow:hidden;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--ln)}.card:active{transform:scale(.98)}
+.ph{position:relative;aspect-ratio:4/3;background:var(--s2);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:10px;left:10px;font-style:normal;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;background:rgba(21,20,19,.85);color:var(--gold2)}
+.cb{padding:18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.cb h3{font-size:26px}.code{color:var(--gold2);font-size:13px;font-weight:600}
+.cb .d{color:var(--mut);font-size:14px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cb .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:12px}
+.cb b{font-size:20px}
+.empty{padding:48px 24px;text-align:center;border:1px dashed var(--ln);border-radius:var(--r);color:var(--mut)}
+.empty h2{color:var(--ink);font-size:36px;margin-bottom:10px}
+/* product */
+.pd{display:grid;gap:26px}
+@media(min-width:900px){.pd{grid-template-columns:1.2fr .8fr;gap:48px;align-items:start}.info{position:sticky;top:calc(var(--hd) + 24px)}}
+.stage{position:relative;aspect-ratio:4/3;background:var(--s1);border-radius:var(--r);overflow:hidden;touch-action:pan-y;outline-offset:-2px}
+.stage::after{content:"";position:absolute;inset:8px;border:1.5px dashed var(--ln);border-radius:10px;pointer-events:none}
+.stage img,#lbimg{width:100%;height:100%;object-fit:contain}
+.sw{animation:sw .3s}@keyframes sw{from{opacity:.2;transform:scale(.985)}}
+.nv{position:absolute;top:50%;translate:0 -50%;width:48px;height:48px;border-radius:50%;background:rgba(21,20,19,.75);font-size:28px;line-height:1;z-index:2}
+.nv.p{left:10px}.nv.n{right:10px}
+.cnt{position:absolute;left:12px;bottom:12px;padding:3px 12px;border-radius:999px;background:rgba(21,20,19,.8);font-size:13px;font-weight:600;z-index:2}
+.zm{position:absolute;right:12px;bottom:10px;min-width:44px;min-height:36px;padding:0 12px;border-radius:999px;background:rgba(21,20,19,.8);font-size:13px;font-weight:600;z-index:2}
+.one .nv,.one .cnt,.one+.thumbs{display:none}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 2px;scroll-snap-type:x proximity}
+.th{flex:0 0 76px;aspect-ratio:1;border-radius:10px;overflow:hidden;border:2px solid transparent;opacity:.65;scroll-snap-align:center}
+.th img{width:100%;height:100%;object-fit:cover}
+.th[aria-current=true]{border-color:var(--gold);opacity:1}
+.info h1{font-size:clamp(40px,7vw,72px);margin:6px 0}
+.pr{font:800 34px var(--f2);color:var(--gold2);margin:12px 0}
+.info p{color:var(--mut);margin-bottom:16px}
+.ft{list-style:none;padding:0;margin:0 0 20px}
+.ft li{padding:10px 0 10px 26px;border-bottom:1px dashed var(--ln);position:relative}
+.ft li::before{content:"✓";position:absolute;left:0;color:var(--gold)}
+.av{display:inline-block;padding:4px 14px;border:1px solid var(--ln);border-radius:999px;font-size:14px;margin-bottom:18px}
+#lb{position:fixed;inset:0;z-index:100;background:rgba(10,9,8,.97);display:none;align-items:center;justify-content:center;padding:56px 0 24px}
+#lb.on{display:flex}#lb img{max-height:100%}
+#lb .cnt{left:50%;translate:-50% 0;bottom:max(16px,env(safe-area-inset-bottom))}
+.lbx{position:absolute;top:max(10px,env(safe-area-inset-top));right:12px;width:48px;height:48px;border-radius:50%;background:rgba(40,37,34,.9);font-size:20px;z-index:3}
+#lb.one .nv{display:none}
+/* floating whatsapp + toast */
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:40;display:flex;align-items:center;min-height:52px;padding:0 22px;border-radius:999px;background:#25d366;color:#06220f;font-weight:800;box-shadow:0 8px 28px rgba(0,0,0,.45)}
+body[data-page=product] .fab,body[data-page=owner] .fab{display:none}
+.toast{position:fixed;left:50%;translate:-50% 0;bottom:max(24px,env(safe-area-inset-bottom));z-index:150;max-width:90vw;padding:12px 20px;border-radius:12px;background:var(--gold2);color:#1a1612;font-weight:600}
+/* loader */
+#ld{position:fixed;inset:0;z-index:200;background:var(--bg);display:grid;place-content:center;justify-items:center;gap:18px;transition:opacity .5s,visibility .5s}
+#ld.off{opacity:0;visibility:hidden}
+#ld b{font:800 clamp(34px,9vw,64px) var(--f1);letter-spacing:.1em;text-transform:uppercase}
+#ld i{display:block;width:min(260px,60vw);border-top:2px dashed var(--gold);transform-origin:left;animation:sew .9s ease-out}
+@keyframes sew{from{transform:scaleX(0)}}
+/* owner */
+.ow{max-width:820px;margin:0 auto;padding:28px var(--pad)}
+.ow h1{font-size:clamp(40px,8vw,72px);margin-bottom:10px}
+.note{padding:14px 16px;border:1px dashed var(--ln);border-radius:12px;color:var(--mut);font-size:14px;margin:16px 0}
+label{display:block;font-size:14px;color:var(--mut);margin:16px 0 6px}
+input,select,textarea{width:100%;min-height:48px;padding:12px 14px;background:var(--s1);color:var(--ink);border:1px solid var(--ln);border-radius:10px;font:inherit}
+input[type=checkbox]{width:22px;min-height:22px;accent-color:var(--gold)}
+.chk{display:flex;align-items:center;gap:10px;color:var(--ink)}
+.orow{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px;margin-bottom:10px;background:var(--s1);border-radius:12px}
+.orow img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.orow div{flex:1;min-width:140px}.orow small{color:var(--mut);display:block}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin:12px 0}
+.pv{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden}
+.pv img{width:100%;height:100%;object-fit:cover}
+.pv button{position:absolute;top:4px;right:4px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.75)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-page="home">
+<div id="ld" aria-hidden="true"><b>Unique Seat Cover</b><i></i></div>
+<header class="hd">
+  <a class="brand" href="#/" aria-label="Unique Seat Cover home">Unique Seat Cover</a>
+  <button class="mb" data-act="menu" aria-expanded="false" aria-controls="nav">Menu</button>
+  <nav class="nav" id="nav" aria-label="Main">
+    <a href="#/" data-k="home">Home</a>
+    <a href="#/category/seat-cover" data-k="col">Collections</a>
+    <a href="#/about" data-k="about">About</a>
+    <a href="#/contact" data-k="contact">Contact</a>
+  </nav>
+</header>
+<main id="app" tabindex="-1"></main>
+<a class="fab" id="fab" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">WhatsApp</a>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lbx" data-act="lb-close" aria-label="Close image viewer">✕</button>
+  <img id="lbimg" alt="">
+  <button class="nv p" data-act="g-prev" aria-label="Previous image">‹</button>
+  <button class="nv n" data-act="g-next" aria-label="Next image">›</button>
+  <span class="cnt"></span>
+</div>
+<input type="file" id="imp" accept="application/json" hidden>
+
+<script>
+/* ===================== CONFIG ===================== */
+const CFG={name:'Unique Seat Cover',wa:'919865712826',phone:'9865712826',email:'jameenadhif@gmail.com',
+  map:'9.931715,78.123130',max:30,key:'usc.catalogue.v1',pin:'usc.owner.pin',own:'usc.owner.session'};
+const CATS={
+  'seat-cover':{name:'Seat Covers',blurb:'Fitted covers for your bike seat.'},
+  'tank-cover':{name:'Tank Covers',blurb:'Covers that dress and protect the tank.'},
+  'outer-cover':{name:'Outer Covers',blurb:'Full outer covers for your bike.'}};
+
+/* ===================== DATA (replace samples in Owner mode) ===================== */
+const S=(code,category,name,price)=>({id:code,category,name,code,price,
+  description:'Sample listing for layout preview only. Edit or delete it in Owner mode.',
+  features:[],availability:'',images:[],visible:true,sample:true});
+const SAMPLE=[S('USC-001','seat-cover','Sample Seat Cover A',1499),S('USC-002','seat-cover','Sample Seat Cover B',1799),
+  S('USC-003','seat-cover','Sample Seat Cover C',1299),S('UTC-001','tank-cover','Sample Tank Cover A',599),
+  S('UTC-002','tank-cover','Sample Tank Cover B',699),S('UOC-001','outer-cover','Sample Outer Cover A',899),
+  S('UOC-002','outer-cover','Sample Outer Cover B',1099)];
+
+/* Storage layer: swap Store.load/save for Firebase/Supabase later */
+const norm=p=>({id:String(p.code),category:CATS[p.category]?p.category:'seat-cover',name:String(p.name||'Untitled'),
+  code:String(p.code),price:Math.max(0,Number(p.price)||0),description:String(p.description||''),
+  features:Array.isArray(p.features)?p.features.map(String):[],availability:String(p.availability||''),
+  images:Array.isArray(p.images)?p.images.filter(x=>typeof x==='string'&&x).slice(0,CFG.max):[],
+  visible:p.visible!==false,sample:!!p.sample});
+const Store={
+  load(){try{const r=localStorage.getItem(CFG.key);if(r)return JSON.parse(r).filter(p=>p&&p.code).map(norm)}catch(e){}return SAMPLE.map(norm)},
+  save(l){try{localStorage.setItem(CFG.key,JSON.stringify(l));return true}catch(e){return false}}
+};
+
+/* ===================== STATE ===================== */
+let items=Store.load();
+const G={list:[],i:0};
+const O={mode:'list',editing:null,draft:null};
+
+/* ===================== UTILITIES ===================== */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const money=n=>'₹'+Number(n).toLocaleString('en-IN');
+const ph=t=>'data:image/svg+xml,'+encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><pattern id="q" width="64" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="64" height="64" fill="#24211e"/><path d="M0 0H64M0 0V64" stroke="#c9a45c" stroke-opacity=".4" stroke-dasharray="6 5"/><circle r="3" fill="#c9a45c"/></pattern></defs><rect width="800" height="600" fill="url(#q)"/><rect x="190" y="262" width="420" height="76" rx="38" fill="#151413" fill-opacity=".88"/><text x="400" y="311" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#f1ece2">${esc(String(t).slice(0,26))}</text></svg>`);
+const imgs=p=>p.images.length?p.images:[ph(p.name)];
+const hp=s=>{let h=5381;for(const c of s)h=((h<<5)+h+c.charCodeAt(0))|0;return String(h)};
+const owner=()=>sessionStorage.getItem(CFG.own)==='1';
+const pLink=p=>'#/product/'+encodeURIComponent(p.code);
+const waLink=p=>{const m=`Hello Unique Seat Cover,\n\nI am interested in this product.\n\nProduct: ${p.name}\nProduct Code: ${p.code}\nPrice: ₹${p.price}\n\nPlease provide more details.\n\nThank you.`;
+  return `https://wa.me/${CFG.wa}?text=${encodeURIComponent(m)}`};
+const waGeneral=`https://wa.me/${CFG.wa}?text=${encodeURIComponent('Hello Unique Seat Cover, I would like to enquire about your products.')}`;
+const mapLink=`https://www.google.com/maps/dir/?api=1&destination=${CFG.map}`;
+function toast(m){const t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),3200)}
+const shrink=f=>new Promise(res=>{const u=URL.createObjectURL(f),im=new Image();
+  im.onload=()=>{const s=Math.min(1,1000/Math.max(im.width,im.height)),c=document.createElement('canvas');
+    c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);c.getContext('2d').drawImage(im,0,0,c.width,c.height);
+    URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.72))};
+  im.onerror=()=>{URL.revokeObjectURL(u);res(null)};im.src=u});
+
+/* ===================== COMPONENTS ===================== */
+const card=p=>`<a class="card" href="${pLink(p)}"><div class="ph"><img src="${imgs(p)[0]}" alt="${esc(p.name)}" loading="lazy">${p.sample?'<i class="tag">Sample</i>':''}${p.visible?'':'<i class="tag">Hidden</i>'}</div>
+<div class="cb"><h3>${esc(p.name)}</h3><span class="code">${esc(p.code)}</span><p class="d">${esc(p.description)}</p>
+<div class="row"><b>${money(p.price)}</b><span class="btn sm">View product</span></div></div></a>`;
+const catCard=s=>{const c=CATS[s],p=items.find(x=>x.category===s&&x.visible&&x.images.length);
+  return `<a class="cc" href="#/category/${s}"><img src="${p?p.images[0]:ph(c.name)}" alt="${esc(c.name)}" loading="lazy"><div class="ct"><h3>${c.name}</h3><p>${c.blurb}</p><span class="btn sm">Explore collection</span></div></a>`};
+
+/* ===================== PAGES ===================== */
+function home(){return `
+<section class="hero"><h1><span>Unique</span><span>Seat Cover</span></h1><hr>
+<p>Premium bike seat covers, tank covers and outer covers.</p>
+<div class="row"><a class="btn" href="#/category/seat-cover">Browse collections</a><a class="btn g" href="#/contact">Contact us</a></div></section>
+<div class="wrap">
+<section class="sec" id="cats"><h2>Our collections</h2><div class="rail">${Object.keys(CATS).map(catCard).join('')}</div></section>
+<section class="sec" id="about"><h2>About us</h2><div class="ab"><div>
+<p>Unique Seat Cover makes seat covers for bikes, in Madurai. The collection also includes tank covers and outer covers.</p>
+<p style="margin-top:14px">Browse the catalogue, open a product and send your enquiry on WhatsApp. There is no online payment and no sign-up.</p></div>
+<address><b>Unique Seat Cover</b>Sellur Market,<br>Kaliamman Kovil Street,<br>Madurai, Tamil Nadu<br><br>
+Phone &amp; WhatsApp: <a href="tel:${CFG.phone}">${CFG.phone}</a><br>Email: <a href="mailto:${CFG.email}">${CFG.email}</a></address></div></section>
+<section class="sec" id="contact"><h2>Get in touch</h2><div class="acts">
+<a class="act" href="tel:${CFG.phone}"><b>Call me</b><small>${CFG.phone}</small></a>
+<a class="act" href="${waGeneral}" target="_blank" rel="noopener"><b>WhatsApp</b><small>Chat with us</small></a>
+<a class="act" href="${mapLink}" target="_blank" rel="noopener"><b>Direction</b><small>Open in Google Maps</small></a>
+<a class="act" href="mailto:${CFG.email}"><b>Email</b><small>${CFG.email}</small></a></div>
+<div class="foot">© Unique Seat Cover <button data-act="own-tap" aria-label="Copyright mark">·</button></div></section></div>`}
+
+function category(slug){
+  const c=CATS[slug],list=items.filter(p=>p.category===slug&&(p.visible||owner()));
+  return `<div class="wrap"><div class="top"><a class="back" href="#/">← Back</a><h1>${c.name}</h1><p>${list.length} product${list.length===1?'':'s'}</p></div>
+<nav class="chips" aria-label="Collections">${Object.keys(CATS).map(s=>`<a href="#/category/${s}" ${s===slug?'aria-current="page"':''}>${CATS[s].name}</a>`).join('')}</nav>
+${list.length?`<div class="grid">${list.map(card).join('')}</div>`:`<div class="empty"><h2>Nothing here yet</h2><p>New products for ${c.name.toLowerCase()} will appear here soon.</p><p style="margin-top:18px"><a class="btn" href="#/">Back to home</a></p></div>`}</div>`}
+
+function product(code){
+  const p=items.find(x=>x.code===code);
+  if(!p||(!p.visible&&!owner()))return null;
+  const list=imgs(p);G.list=list;G.i=0;
+  return `<div class="wrap"><div class="top"><a class="back" href="#/category/${p.category}">← Back to collection</a></div>
+<div class="pd"><div><div class="stage ${list.length<2?'one':''}" tabindex="0" aria-label="Product images">
+<img id="gmain" src="${list[0]}" alt="${esc(p.name)}, photo 1 of ${list.length}">
+<button class="nv p" data-act="g-prev" aria-label="Previous image">‹</button><button class="nv n" data-act="g-next" aria-label="Next image">›</button>
+<span class="cnt">1 / ${list.length}</span><button class="zm" data-act="g-zoom" aria-label="Open full screen viewer">Full screen</button></div>
+<div class="thumbs" role="list">${list.map((s,k)=>`<button class="th" role="listitem" data-act="g-th" data-i="${k}" aria-label="Show photo ${k+1}" ${k?'':'aria-current="true"'}><img src="${s}" alt="" loading="lazy"></button>`).join('')}</div></div>
+<div class="info"><span class="code">${esc(p.code)}</span><h1>${esc(p.name)}</h1><div class="pr">${money(p.price)}</div>
+${p.availability?`<span class="av">${esc(p.availability)}</span>`:''}<p>${esc(p.description)}</p>
+${p.features.length?`<ul class="ft">${p.features.map(f=>`<li>${esc(f)}</li>`).join('')}</ul>`:''}
+<a class="btn big" href="${waLink(p)}" target="_blank" rel="noopener">Enquire on WhatsApp</a>
+<p style="margin-top:14px;font-size:14px">Prefer a call? <a href="tel:${CFG.phone}" style="color:var(--gold2)">${CFG.phone}</a></p></div></div></div>`}
+
+function nf(){return `<div class="wrap"><div class="empty" style="margin-top:40px"><h2>Page not found</h2><p>This page does not exist or the product is no longer listed.</p><p style="margin-top:18px"><a class="btn" href="#/">Go to home</a></p></div></div>`}
+
+/* ===================== OWNER MODE ===================== */
+function ownerView(){
+  if(!owner()){const has=!!localStorage.getItem(CFG.pin);
+    return `<div class="ow"><h1>Owner</h1><form data-form="unlock"><label for="pin">${has?'Enter your owner passcode':'Create an owner passcode (4+ characters)'}</label>
+<input id="pin" name="pin" type="password" autocomplete="off" required minlength="4"><p style="margin-top:16px"><button class="btn" type="submit">${has?'Unlock':'Save passcode and unlock'}</button></p></form>
+<p class="note">This passcode only keeps customers out of the editor on this device. It is not real security, because this site has no server.</p></div>`}
+  if(O.mode==='form')return ownerForm();
+  return `<div class="ow"><h1>Catalogue</h1>
+<div class="tools"><button class="btn" data-act="o-new">+ Add product</button><button class="btn g" data-act="o-export">Export backup</button><button class="btn g" data-act="o-import">Import backup</button><button class="btn g" data-act="o-lock">Lock</button></div>
+<p class="note">Products and photos are saved in this browser only (localStorage, roughly 5 MB). It is not a cloud database. Photos are resized to save space, so a few dozen photos in total is realistic. Clearing browser data erases everything, so use Export backup often. Visitors on other phones will not see your changes until a cloud backend such as Firebase or Supabase replaces <code>Store</code>.</p>
+${items.length?items.map(p=>`<div class="orow"><img src="${imgs(p)[0]}" alt=""><div><b>${esc(p.name)}</b><small>${esc(p.code)} · ${CATS[p.category].name} · ${money(p.price)} · ${p.images.length} photo${p.images.length===1?'':'s'}${p.visible?'':' · Hidden'}</small></div>
+<button class="btn sm g" data-act="o-edit" data-c="${esc(p.code)}">Edit</button><button class="btn sm g" data-act="o-vis" data-c="${esc(p.code)}">${p.visible?'Hide':'Show'}</button><button class="btn sm dng" data-act="o-del" data-c="${esc(p.code)}">Delete</button></div>`).join(''):'<div class="empty"><h2>No products</h2><p>Add your first product.</p></div>'}
+<p style="margin-top:20px"><a class="back" href="#/">← Back to website</a></p></div>`}
+
+function ownerForm(){const d=O.draft;
+  return `<div class="ow"><h1>${O.editing?'Edit product':'Add product'}</h1>
+<form data-form="save"><label for="f-name">Product name</label><input id="f-name" name="pname" required value="${esc(d.name)}">
+<label for="f-code">Product code</label><input id="f-code" name="code" required value="${esc(d.code)}">
+<label for="f-cat">Category</label><select id="f-cat" name="category">${Object.keys(CATS).map(s=>`<option value="${s}" ${s===d.category?'selected':''}>${CATS[s].name}</option>`).join('')}</select>
+<label for="f-price">Price (₹)</label><input id="f-price" name="price" type="number" min="0" step="1" inputmode="numeric" required value="${d.price}">
+<label for="f-desc">Description</label><textarea id="f-desc" name="description" rows="4">${esc(d.description)}</textarea>
+<label for="f-ft">Features (one per line, optional)</label><textarea id="f-ft" name="features" rows="3">${esc(d.features.join('\n'))}</textarea>
+<label for="f-av">Availability (optional, e.g. In stock)</label><input id="f-av" name="availability" value="${esc(d.availability)}">
+<label class="chk"><input type="checkbox" name="visible" ${d.visible?'checked':''}> Show this product to customers</label>
+<label>Photos <span id="pcount"></span></label>
+<button class="btn" type="button" data-act="o-pick">+ ADD PHOTOS</button><input type="file" id="pick" accept="image/*" multiple hidden>
+<div class="pg" id="prev"></div>
+<p class="tools"><button class="btn" type="submit">Save product</button><button class="btn g" type="button" data-act="o-cancel">Cancel</button></p></form></div>`}
+
+function renderPrev(){const d=O.draft;if(!d||!$('#prev'))return;
+  $('#prev').innerHTML=d.images.map((s,k)=>`<div class="pv"><img src="${s}" alt="Photo ${k+1}"><button type="button" data-act="o-rmimg" data-i="${k}" aria-label="Remove photo ${k+1}">✕</button></div>`).join('');
+  $('#pcount').textContent=`(${d.images.length} / ${CFG.max})`}
+
+const F={
+  unlock(f){const v=f.elements.pin.value,st=localStorage.getItem(CFG.pin);
+    if(!st){if(v.length<4)return toast('Use at least 4 characters.');localStorage.setItem(CFG.pin,hp(v))}
+    else if(hp(v)!==st)return toast('Wrong passcode.');
+    sessionStorage.setItem(CFG.own,'1');O.mode='list';render()},
+  save(f){const fd=new FormData(f),code=String(fd.get('code')).trim(),name=String(fd.get('pname')).trim(),price=Number(fd.get('price'));
+    if(!name||!code)return toast('Name and code are required.');
+    if(!(price>=0))return toast('Enter a valid price.');
+    if(items.some(x=>x.code===code&&x!==O.editing))return toast('That product code is already used.');
+    const np=norm({code,name,price,category:fd.get('category'),description:String(fd.get('description')).trim(),
+      features:String(fd.get('features')).split('\n').map(s=>s.trim()).filter(Boolean),availability:String(fd.get('availability')).trim(),
+      images:O.draft.images,visible:!!fd.get('visible')});
+    const next=items.slice(),i=O.editing?next.indexOf(O.editing):-1;
+    if(i>=0)next[i]=np;else next.push(np);
+    if(!Store.save(next))return toast('Not saved: browser storage is full. Remove some photos or products and try again.');
+    items=next;O.mode='list';O.editing=null;render();toast('Product saved.')}
+};
+const blank=()=>({category:'seat-cover',name:'',code:'',price:'',description:'',features:[],availability:'',images:[],visible:true});
+function persist(next,msg){if(!Store.save(next))return toast('Not saved: browser storage is full.');items=next;render();msg&&toast(msg)}
+
+/* ===================== GALLERY ===================== */
+const lbOpen=()=>$('#lb').classList.contains('on');
+function show(i){const n=G.list.length;if(!n)return;G.i=((i%n)+n)%n;const s=G.list[G.i];
+  const m=$('#gmain');if(m){m.classList.remove('sw');m.src=s;m.alt=m.alt.replace(/photo \d+ of \d+/,`photo ${G.i+1} of ${n}`);void m.offsetWidth;m.classList.add('sw')}
+  if(lbOpen())$('#lbimg').src=s;
+  $$('.cnt').forEach(c=>c.textContent=`${G.i+1} / ${n}`);
+  $$('.th').forEach((t,k)=>t.setAttribute('aria-current',k===G.i));
+  const t=$$('.th')[G.i];t&&t.scrollIntoView({block:'nearest',inline:'center'})}
+let lastFocus=null;
+function openLb(){const lb=$('#lb');lastFocus=document.activeElement;$('#lbimg').src=G.list[G.i];$('#lbimg').alt='Full size product photo';
+  lb.classList.toggle('one',G.list.length<2);lb.classList.add('on');document.body.style.overflow='hidden';show(G.i);$('.lbx').focus()}
+function closeLb(){if(!lbOpen())return;$('#lb').classList.remove('on');document.body.style.overflow='';lastFocus&&lastFocus.focus&&lastFocus.focus()}
+
+/* ===================== ROUTER ===================== */
+function render(){
+  let parts;try{parts=location.hash.slice(1).split('/').filter(Boolean).map(decodeURIComponent)}catch(e){parts=['?']}
+  const [a,b]=parts;let v,t=CFG.name,page='home',nav='home';G.list=[];closeLb();
+  if(!a||a==='about'||a==='contact'){v=home();nav=a||'home'}
+  else if(a==='category'&&parts.length===2&&CATS[b]){v=category(b);t=CATS[b].name+' | '+CFG.name;page='category';nav='col'}
+  else if(a==='product'&&parts.length===2){v=product(b);if(v){const p=items.find(x=>x.code===b);t=p.name+' | '+CFG.name;page='product';nav='col'}else{v=nf();page='nf'}}
+  else if(a==='owner'&&parts.length===1){v=ownerView();page='owner';t='Owner | '+CFG.name}
+  else{v=nf();page='nf'}
+  const app=$('#app');app.innerHTML=v;app.classList.remove('in');void app.offsetWidth;app.classList.add('in');
+  document.title=t;document.body.dataset.page=page;
+  $$('.nav a').forEach(l=>l.removeAttribute('aria-current'));const act=$(`.nav a[data-k="${nav}"]`);act&&act.setAttribute('aria-current','page');
+  $('.nav').classList.remove('open');$('.mb').setAttribute('aria-expanded','false');
+  $('#fab').href=waGeneral;
+  if(a==='about'||a==='contact')setTimeout(()=>{const e=$('#'+a);e&&e.scrollIntoView({behavior:'smooth'})},60);
+  else window.scrollTo({top:0,behavior:'instant'});
+  if(page==='owner'&&O.mode==='form')renderPrev();
+}
+
+/* ===================== EVENT HANDLERS (registered once) ===================== */
+let taps=0,tapT;
+const A={
+  menu(el){const n=$('.nav'),o=n.classList.toggle('open');el.setAttribute('aria-expanded',o)},
+  'g-prev'(){show(G.i-1)},'g-next'(){show(G.i+1)},'g-th'(el){show(+el.dataset.i)},'g-zoom'(){openLb()},'lb-close'(){closeLb()},
+  'own-tap'(){taps++;clearTimeout(tapT);tapT=setTimeout(()=>taps=0,3000);if(taps>=5){taps=0;location.hash='#/owner'}},
+  'o-new'(){O.editing=null;O.draft=blank();O.mode='form';render()},
+  'o-edit'(el){const p=items.find(x=>x.code===el.dataset.c);if(!p)return;O.editing=p;O.draft={...p,images:[...p.images],features:[...p.features]};O.mode='form';render()},
+  'o-cancel'(){O.mode='list';O.editing=null;render()},
+  'o-vis'(el){persist(items.map(p=>p.code===el.dataset.c?{...p,visible:!p.visible}:p))},
+  'o-del'(el){if(confirm('Delete this product? This cannot be undone.'))persist(items.filter(p=>p.code!==el.dataset.c),'Product deleted.')},
+  'o-pick'(){$('#pick').click()},
+  'o-rmimg'(el){O.draft.images.splice(+el.dataset.i,1);renderPrev()},
+  'o-lock'(){sessionStorage.removeItem(CFG.own);O.mode='list';render()},
+  'o-import'(){$('#imp').click()},
+  'o-export'(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(items,null,1)],{type:'application/json'}));
+    a.download='unique-seat-cover-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+};
+document.addEventListener('click',e=>{
+  if(e.target.id==='lb'){closeLb();return}
+  const el=e.target.closest('[data-act]');if(el&&A[el.dataset.act])A[el.dataset.act](el)});
+document.addEventListener('submit',e=>{const f=e.target.closest('[data-form]');if(!f)return;e.preventDefault();F[f.dataset.form](f)});
+document.addEventListener('change',async e=>{
+  if(e.target.id==='pick'){const room=CFG.max-O.draft.images.length,files=[...e.target.files].slice(0,Math.max(0,room));
+    if(e.target.files.length>room)toast(`Only ${CFG.max} photos allowed per product.`);
+    for(const f of files){const d=await shrink(f);if(d)O.draft.images.push(d);else toast(`Could not read ${f.name}.`)}
+    e.target.value='';renderPrev()}
+  if(e.target.id==='imp'){const f=e.target.files[0];if(!f)return;
+    try{const data=JSON.parse(await f.text());if(!Array.isArray(data))throw 0;
+      const ok=data.filter(p=>p&&p.code&&p.name).map(norm);persist(ok,`Imported ${ok.length} products.`)}catch(err){toast('That file is not a valid backup.')}
+    e.target.value=''}});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeLb();$('.nav').classList.remove('open')}
+  if(G.list.length>1&&(lbOpen()||document.body.dataset.page==='product')&&!/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)){
+    if(e.key==='ArrowLeft')show(G.i-1);if(e.key==='ArrowRight')show(G.i+1)}});
+let tx=null;
+document.addEventListener('touchstart',e=>{tx=e.target.closest('.stage,#lb')?e.touches[0].clientX:null},{passive:true});
+document.addEventListener('touchend',e=>{if(tx===null)return;const d=e.changedTouches[0].clientX-tx;tx=null;if(Math.abs(d)>45)show(G.i+(d<0?1:-1))},{passive:true});
+document.addEventListener('error',e=>{const t=e.target;if(t.tagName==='IMG'&&!t.dataset.fb){t.dataset.fb=1;t.src=ph('Image unavailable')}},true);
+window.addEventListener('hashchange',render);
+
+/* ===================== INITIALIZATION ===================== */
+render();
+const ld=$('#ld');
+if(sessionStorage.getItem('usc.seen'))ld.remove();
+else{sessionStorage.setItem('usc.seen','1');setTimeout(()=>{ld.classList.add('off');setTimeout(()=>ld.remove(),600)},1100)}
+</script>
+</body>
+</html>
